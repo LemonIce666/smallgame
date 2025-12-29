@@ -1,0 +1,16 @@
+{
+  "name": "student-registry",
+  "version": "1.0.0",
+  "description": "Self-contained student academic management system with SQLite and web UI.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "test": "node -e \"console.log('No automated tests yet')\""
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite": "^5.1.6",
+    "sqlite3": "^5.1.7"
+  }
+}
