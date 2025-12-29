@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学生教务系统</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>学生教务系统</h1>
+    <p>本地 SQLite 数据库，无需额外部署，开箱即用。</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>学生管理</h2>
+          <p>创建、查看、编辑学生信息</p>
+        </div>
+        <button id="add-student-btn" class="primary">新增学生</button>
+      </div>
+      <table id="students-table">
+        <thead>
+          <tr><th>姓名</th><th>邮箱</th><th>专业</th><th>操作</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>课程管理</h2>
+          <p>创建、查看、编辑课程信息</p>
+        </div>
+        <button id="add-course-btn" class="primary">新增课程</button>
+      </div>
+      <table id="courses-table">
+        <thead>
+          <tr><th>代码</th><th>名称</th><th>学分</th><th>操作</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>选课与成绩</h2>
+          <p>为学生选课、录入成绩</p>
+        </div>
+        <button id="add-enrollment-btn" class="primary">新增选课</button>
+      </div>
+      <table id="enrollments-table">
+        <thead>
+          <tr><th>学期</th><th>学生</th><th>课程</th><th>成绩</th><th>操作</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="dialog" class="dialog hidden">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h3 id="dialog-title"></h3>
+        <button id="dialog-close">×</button>
+      </div>
+      <form id="dialog-form"></form>
+    </div>
+  </div>
+
+  <template id="student-form-template">
+    <label>姓名<input name="name" required /></label>
+    <label>邮箱<input name="email" type="email" required /></label>
+    <label>专业<input name="major" /></label>
+    <button type="submit" class="primary">保存</button>
+  </template>
+
+  <template id="course-form-template">
+    <label>课程代码<input name="code" required /></label>
+    <label>课程名称<input name="title" required /></label>
+    <label>学分<input name="credits" type="number" min="1" value="3" /></label>
+    <button type="submit" class="primary">保存</button>
+  </template>
+
+  <template id="enrollment-form-template">
+    <label>学生<select name="student_id" required></select></label>
+    <label>课程<select name="course_id" required></select></label>
+    <label>学期<input name="term" placeholder="如 2024 秋季" required /></label>
+    <button type="submit" class="primary">保存</button>
+  </template>
+
+  <template id="grade-form-template">
+    <label>成绩（如 A、B+、88）<input name="grade" required /></label>
+    <button type="submit" class="primary">提交</button>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
